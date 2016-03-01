@@ -1,0 +1,25 @@
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: 'gitlab.example.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      # List of environment variables:
+      #   https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/files/gitlab-config-template/gitlab.rb.template
+      external_url 'https://gitlab.example.com'
+      gitlab_rails['time_zone'] = 'Europe/Moscow'
+      gitlab_rails['gitlab_email_from'] = 'example@example.com'
+      gitlab_rails['gitlab_email_display_name'] = 'Example'
+      gitlab_rails['incoming_email_host'] = "imap.gmail.com"
+      gitlab_rails['incoming_email_port'] = 993
+      gitlab_rails['incoming_email_ssl'] = true
+
+  ports:
+    - '80:80'
+    - '443:443'
+    - '22:22'
+  volumes:
+    - '/srv/gitlab/config:/etc/gitlab'
+    - '/srv/gitlab/logs:/var/log/gitlab'
+    - '/srv/gitlab/data:/var/opt/gitlab'
+    - '/srv/gitlab/logs/reconfigure:/var/log/gitlab/reconfigure'
