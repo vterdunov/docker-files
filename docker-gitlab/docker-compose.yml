@@ -6,7 +6,7 @@ web:
     GITLAB_OMNIBUS_CONFIG: |
       # List of environment variables:
       #   https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/files/gitlab-config-template/gitlab.rb.template
-      external_url 'https://gitlab.example.com'
+      external_url 'http://gitlab.example.com'
       gitlab_rails['time_zone'] = 'Europe/Moscow'
       gitlab_rails['gitlab_email_from'] = 'example@example.com'
       gitlab_rails['gitlab_email_display_name'] = 'Example'
